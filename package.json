@@ -1,7 +1,7 @@
 {
   "name": "@schematics/angular-mfe",
   "version": "1.0.0",
-  "description": "Angular MFE set up",
+  "description": "Angular MFE",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",

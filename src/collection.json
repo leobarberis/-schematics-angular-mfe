@@ -2,9 +2,10 @@
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "angular-mfe": {
-      "description": "A blank schematic.",
+      "description": "Angular MFE Archetype",
       "factory": "./angular-mfe/index#angularMfe",
-      "schema": "./angular-mfe/schema.json"
+      "schema": "./angular-mfe/schema.json",
+      "aliases": ["mfe"]
     }
   }
 }
