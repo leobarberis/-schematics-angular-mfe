@@ -15,8 +15,6 @@ import { Schema } from "./schema";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 import { PackageManager } from "@schematics/angular/ng-new/schema";
 
-// You don't have to export the function as default. You can also have more than one rule factory
-// per file.
 export function angularMfe(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     const { name } = _options;
@@ -38,7 +36,13 @@ export function angularMfe(_options: Schema): Rule {
     const merged = mergeWith(templateSource, MergeStrategy.Overwrite);
     const updatePackageJson = (context: SchematicContext) => {
       return () => {
-        context.addTask(new NodePackageInstallTask({ packageManager: "yarn" }));
+        context.addTask(
+          new NodePackageInstallTask({
+            packageManager: "yarn",
+            workingDirectory: name,
+          }),
+          []
+        );
       };
     };
     const rule = chain([
