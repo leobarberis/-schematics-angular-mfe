@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id":"AngularMFESchematics",
+    "title": "ng new mfe options",
+    "type": "object",
+    "description": "MFE archetype",
+    "properties": {
+        "name": {
+            "type":"string",
+            "description": "The name of the project",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What is your project name?"
+        },
+        "port": {
+            "type":"number",
+            "description": "Port for development",
+            "$default": {
+                "$source": "argv",
+                "index": 1
+            },
+            "x-prompt": "What is your development port?"
+        }
+    },
+    "required": [
+        "name",
+        "port"
+    ]
+}
