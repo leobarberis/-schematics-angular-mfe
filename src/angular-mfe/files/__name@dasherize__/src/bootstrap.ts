@@ -1,17 +1,17 @@
-import "zone.js/dist/zone";
+import 'zone.js/dist/zone';
 
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
-import { AppModule } from "./app/app.module";
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 import {
   ApplicationRef,
   enableProdMode,
   NgZone,
   PlatformRef,
-} from "@angular/core";
-import { AppComponent } from "./app/app.component";
-import { environment } from "./environments/environment";
-import { isDevMode } from "@angular/core";
-import { RoutingService } from "./app/services/routing.service";
+  isDevMode
+} from '@angular/core';
+import { AppComponent } from './app/app.component';
+import { environment } from './environments/environment';
+import { RoutingService } from './app/routing.service';
 
 if (environment.production) {
   try {
@@ -25,12 +25,13 @@ let ngZoneRef: NgZone;
 let routingService: RoutingService;
 
 function mount(el: HTMLElement, { onNavigate }) {
-  platformBrowserDynamic([{ provide: "_onNavigation", useValue: onNavigate }])
+  platformBrowserDynamic([{ provide: '_onNavigation', useValue: onNavigate }])
     .bootstrapModule(AppModule)
     .then((app) => {
       const appRef = app.injector.get(ApplicationRef);
-      const factory =
-        app.componentFactoryResolver.resolveComponentFactory(AppComponent);
+      const factory = app.componentFactoryResolver.resolveComponentFactory(
+        AppComponent
+      );
       routingService = app.injector.get(RoutingService);
       ngZoneRef = app.injector.get(NgZone);
       ngZoneRef.run(() => appRef.bootstrap(factory, el));
@@ -50,7 +51,7 @@ function mount(el: HTMLElement, { onNavigate }) {
 }
 
 if (isDevMode()) {
-  const devRoot: HTMLElement = document.querySelector("#_<%= name %>-dev-root");
+  const devRoot: HTMLElement = document.querySelector('#_<%= name %>-dev-root');
   if (devRoot) {
     mount(devRoot, { onNavigate: null });
   }

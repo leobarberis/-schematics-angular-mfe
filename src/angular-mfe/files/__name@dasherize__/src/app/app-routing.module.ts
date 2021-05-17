@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { <%= classify(name) %>Component } from './<%= name %>/<%= name %>.component';
-import { SomeComponent } from './some/some.component';
+import { HomeComponent } from './home/home.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { ShoppingComponent } from './shopping/shopping.component';
 
 const routes: Routes = [
   {
-    path: '<%= name %>/someRoute',
-    component: SomeComponent,
+    path: '<%= name %>/pricing',
+    component: PricingComponent,
+  },
+  {
+    path: '<%= name %>/shopping',
+    component: ShoppingComponent,
   },
   {
     path: '<%= name %>',
-    component: <%= classify(name) %>Component,
+    component: HomeComponent,
     pathMatch: 'full',
   },
   {
     path: '',
     pathMatch: 'full',
-    component: <%= classify(name) %>Component,
+    component: HomeComponent,
   },
   {
     path: '**',

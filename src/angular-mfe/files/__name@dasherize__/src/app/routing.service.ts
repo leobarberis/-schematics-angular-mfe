@@ -1,12 +1,12 @@
-import { Inject, Injectable, NgZone } from "@angular/core";
-import { Router } from "@angular/router";
+import { Inject, Injectable, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class RoutingService {
   constructor(
-    @Inject("_onNavigation") private onNavigate: any,
+    @Inject('_onNavigation') private onNavigate: any,
     private router: Router,
     private ngZone: NgZone
   ) {}
@@ -18,9 +18,7 @@ export class RoutingService {
   }
 
   navigateInMemory(path: string) {
-    this.ngZone
-      .run(() => this.router.navigateByUrl(path, { replaceUrl: true }))
-      .then();
+    this.ngZone.run(() => this.router.navigateByUrl(path, {replaceUrl: true})).then();
   }
 
   location() {

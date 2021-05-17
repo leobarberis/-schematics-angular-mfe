@@ -1,0 +1,28 @@
+<button
+  type="button"
+  class="btn btn-primary"
+  (click)="isCollapsed = !isCollapsed"
+  [attr.aria-expanded]="!isCollapsed"
+  aria-controls="collapseBasic"
+>
+  Shopping
+</button>
+<hr />
+<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <div class="well well-lg card card-block card-header">Shopping</div>
+</div>
+
+<hr />
+
+<button
+  class="btn btn-sm btn-outline-primary mr-2"
+  (click)="navigate('/<%= name %>/pricing')"
+>
+  Pricing
+</button>
+<button
+  class="btn btn-sm btn-outline-primary mr-2"
+  (click)="navigate('/<%= name %>')"
+>
+  Home
+</button>
