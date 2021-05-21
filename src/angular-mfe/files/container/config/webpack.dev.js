@@ -16,7 +16,7 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        <%= name %>: "<%= name %>@http://localhost:<%= port %>/remoteEntry.js",
+        <%= camelize(name) %>: "<%= camelize(name) %>@http://localhost:<%= port %>/remoteEntry.js",
       },
       shared: packageJson.dependencies,
     }),

@@ -1,4 +1,4 @@
-import { mount } from "<%= name %>/<%= classify(name) %>App";
+import { mount } from "<%= camelize(name) %>/<%= classify(name) %>App";
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
