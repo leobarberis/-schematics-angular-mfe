@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       // For remotes (please adjust)
-      name: "<%= name %>",
+      name: "<%= camelize(name) %>",
       filename: "remoteEntry.js",
       exposes: {
         "./<%= classify(name) %>App": "./src/bootstrap.ts",
