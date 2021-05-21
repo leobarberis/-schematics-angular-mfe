@@ -3,16 +3,28 @@ import { render, unmountComponentAtNode } from "react-dom";
 import App from "./App";
 
 class ContainerApp extends HTMLElement {
+
+  static get observedAttributes() {
+    return ['pathname'];
+  }
+
+  createApp(pathname) {
+    return createElement(App, { pathname });
+  }
+
   connectedCallback() {
-    const props = Object.values(this.attributes).map((attribute) => [
-      attribute.name,
-      attribute.value,
-    ]);
-    render(createElement(App, Object.fromEntries(props)), this);
+    const pathname = this.getAttribute('pathname');
+    render(this.createApp(pathname), this);
   }
 
   disconnectedCallback() {
     unmountComponentAtNode(App);
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'pathname') {
+      render(this.createApp(newValue), this);
+    }
   }
 }
 
