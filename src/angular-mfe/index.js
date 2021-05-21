@@ -32,6 +32,7 @@ function angularMfe(_options) {
             updateMFE(_context),
             updateContainer(_context),
         ]);
+        tree.create(".gitignore", "**/node_modules\n**/dist\ncdn/public\npackage-lock.json");
         return rule(tree, _context);
     };
 }

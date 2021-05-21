@@ -48,6 +48,11 @@ export function angularMfe(_options: Schema): Rule {
       updateContainer(_context),
     ]);
 
+    tree.create(
+      ".gitignore",
+      "**/node_modules\n**/dist\ncdn/public\npackage-lock.json"
+    );
+
     return rule(tree, _context) as Rule;
   };
 }
