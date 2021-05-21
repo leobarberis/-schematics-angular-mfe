@@ -50,7 +50,7 @@ export function angularMfe(_options: Schema): Rule {
 
     tree.create(
       ".gitignore",
-      "**/node_modules\n**/dist\ncdn/public\npackage-lock.json"
+      "**/node_modules\n**/dist\ncontainer\npackage-lock.json"
     );
 
     return rule(tree, _context) as Rule;
