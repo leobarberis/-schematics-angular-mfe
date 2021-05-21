@@ -20,7 +20,7 @@ export function angularMfe(_options: Schema): Rule {
       template({ ..._options, ...strings }),
     ]);
     const merged = mergeWith(templateSource, MergeStrategy.Overwrite);
-    const updatePackageJson = (context: SchematicContext) => {
+    const updateMFE = (context: SchematicContext) => {
       return () => {
         context.addTask(
           new NodePackageInstallTask({
@@ -31,9 +31,21 @@ export function angularMfe(_options: Schema): Rule {
         );
       };
     };
+    const updateContainer = (context: SchematicContext) => {
+      return () => {
+        context.addTask(
+          new NodePackageInstallTask({
+            packageManager: "npm",
+            workingDirectory: "container",
+          }),
+          []
+        );
+      };
+    };
     const rule = chain([
       merged,
-      updatePackageJson(_context),
+      updateMFE(_context),
+      updateContainer(_context),
     ]);
 
     return rule(tree, _context) as Rule;
